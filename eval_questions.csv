@@ -1,0 +1,11 @@
+question,expected_keyword
+What are the two components of a RAG model?,retriever
+Which retriever does the paper use?,DPR
+Which generator model does the paper use?,BART
+What knowledge source is used for retrieval?,Wikipedia
+What is the difference between RAG-Sequence and RAG-Token?,token
+Which library is used to build the document index for fast search?,FAISS
+What kind of task is Jeopardy question generation?,generation
+Which open-domain question answering datasets was RAG evaluated on?,Natural Questions
+What is LangChain?,couldn't find
+What is the capital of France?,couldn't find

@@ -1,0 +1,19 @@
+question,expected_keyword,answer,correct
+What are the two components of a RAG model?,retriever,"Based on the provided context, the two components are the parametric memory and the non-parametric component.",False
+Which retriever does the paper use?,DPR,"Based on the provided text, RAG's retriever is initialized using DPR's retriever, which uses retrieval supervision on Natural Questions and TriviaQA.",True
+Which generator model does the paper use?,BART,"The paper uses BART-large (specifically, a pre-trained seq2seq transformer with 400M parameters).",True
+What knowledge source is used for retrieval?,Wikipedia,"Based on the provided context, a single Wikipedia dump (specifically, the December 2018 dump) is used as the non-parametric knowledge source.",True
+What is the difference between RAG-Sequence and RAG-Token?,token,"Based on the provided document, the difference lies in how they handle latent documents and marginalization during generation:
+
+* **RAG-Sequence:** Top $K$ documents are retrieved, and the generator produces the output sequence probability for each document, which are then marginalized. The same latent document is used for the entire sequence.
+* **RAG-Token:** A different latent document can be drawn for each target token and marginalized accordingly. This allows the generator to choose and combine content from several different documents when producing an answer.",True
+Which library is used to build the document index for fast search?,FAISS,FAISS is used to build the document index for fast retrieval.,True
+What kind of task is Jeopardy question generation?,generation,"Based on the provided context, Jeopardy question generation is a challenging knowledge-intensive generation task (and an open-domain question generation task in a non-QA setting).",True
+Which open-domain question answering datasets was RAG evaluated on?,Natural Questions,"Based on the provided context, RAG was evaluated on the following four open-domain QA datasets:
+
+1. Natural Questions (NQ)
+2. TriviaQA (TQA)
+3. WebQuestions (WQ)
+4. CuratedTrec (CT)",True
+What is LangChain?,couldn't find,I couldn't find that in the document.,True
+What is the capital of France?,couldn't find,I couldn't find that in the document.,True
