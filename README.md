@@ -61,13 +61,6 @@ source venv/bin/activate       # Mac/Linux
 pip install -r requirements.txt
 ```
 
-Copy `.env.example` to `.env` and paste your key:
-
-```
-GOOGLE_API_KEY=your_key_here
-GEMINI_MODEL=gemini-flash-lite-latest
-```
-
 Then start the app:
 
 ```bash
