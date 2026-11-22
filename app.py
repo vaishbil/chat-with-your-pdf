@@ -280,10 +280,10 @@ if question := st.chat_input(placeholder, disabled=not ready):
                 graph = build_graph(st.session_state.store, get_llm(provider), k)
                 state = run_agent(graph, question, history)
         except Exception as e:
+            st.session_state.messages.pop()  # drop the failed question so it isn't shown twice
             st.error(
                 f"couldn't get an answer from the model: {e}\n\n"
-                "check GOOGLE_API_KEY in your .env, or try again in a minute "
-                "(the free tier gets busy)."
+                "the free gemini tier can be slow or busy. try again in a minute."
             )
             st.stop()
         text = state["answer"]
