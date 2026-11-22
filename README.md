@@ -3,6 +3,9 @@
 An agentic RAG app that answers questions from your PDFs and shows where each answer came from.
 Instead of searching once and hoping for the best, a LangGraph agent rewrites the question, checks its own search results, and retries or says "not found" rather than making something up.
 
+<!-- TODO: after deploying, uncomment this line and add your link -->
+<!-- **Live demo:** https://your-app-link-here -->
+
 ![chat with your pdfs](chatwithyourpdf.png)
 
 **Stack:** Python, LangChain, LangGraph, Hugging Face Embeddings, FAISS, Google Gemini, Streamlit
@@ -13,7 +16,7 @@ Instead of searching once and hoping for the best, a LangGraph agent rewrites th
 - Every answer comes with **receipts**: the pages and text chunks it was based on
 - Understands follow-ups like "how does it work?" by reading the recent chat
 - Declines to answer when the PDF doesn't contain the answer
-- Shows **how i got this**, a step-by-step trace of what the agent did
+- Shows **how I got this**, a step-by-step trace of what the agent did
 
 ## How it works
 
@@ -61,6 +64,13 @@ source venv/bin/activate       # Mac/Linux
 pip install -r requirements.txt
 ```
 
+Copy `.env.example` to `.env` and paste your key:
+
+```
+GOOGLE_API_KEY=your_key_here
+GEMINI_MODEL=gemini-flash-lite-latest
+```
+
 Then start the app:
 
 ```bash
@@ -77,11 +87,12 @@ The first run downloads the embedding model (about 90 MB), so the first PDF take
 python eval.py path/to/paper.pdf
 ```
 
-I tested it on the original [RAG paper](https://arxiv.org/abs/2005.11401) with 10 questions in `eval_questions.csv`, including 2 that the paper can't answer.
+I tested it on the original [RAG paper](https://arxiv.org/abs/2005.11401) (download the PDF from arXiv) with 10 questions in `eval_questions.csv`, including 2 that the paper can't answer.
 
 | Version | Score |
 |---|---|
 | Baseline pipeline (retrieve, then answer; no agent) | 9/10 |
+<!-- TODO: run eval.py on the full agent, then add a row here, e.g. | Full agent (rewrite, grade, retry or decline) | X/10 | -->
 
 Both out-of-document questions were correctly refused. The one miss was a keyword that was too strict: the answer was right but used different words. The check is deliberately simple, so treat it as a sanity check, not a benchmark.
 
@@ -92,6 +103,7 @@ app.py               Streamlit UI and PDF indexing
 rag_graph.py         LangGraph agent (rewrite, retrieve, grade, answer or decline)
 eval.py              Evaluation script
 eval_questions.csv   Test questions and expected keywords
+.env.example         Template for your API key
 .streamlit/          Theme colors
 requirements.txt     Python dependencies
 ```
